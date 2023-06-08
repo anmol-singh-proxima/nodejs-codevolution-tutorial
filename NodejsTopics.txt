@@ -62,35 +62,62 @@
 ==== MODULES ====
 =================
 
+What is module?
 - A module is an encapsulated and reusable chunk of code that has its own context
 - In Nodejs, each file is a module that is isolated by default
-- To load a module into another file, we use require function
+- To load a module into another file, we use require() function
 - When the main file is executed, the code in the module is also executed
 - If a file we are requiring is a Javascript file, then we can skip specifying the .js extension and nodejs will infer it on our behalf
 
 There are 3 types of Modules:
-    - Local Modules - Modules that we create as a developer in our application
-    - Built-in Modules - Modules that Nodejs ships with out of the box
-    - Third party Modules - Modules created by other developers that we can use in out application
+- Local Modules - Modules that we create as a developer in our application
+- Built-in Modules - Modules that Nodejs ships with out of the box
+- Third party Modules - Modules created by other developers that we can use in out application
 
 CommonJS
-    - It is a standard that states how a module should be structured and shared
+- It is a standard that states how a module should be structured and shared
+- Each file is treated as a module
+- Variables, functions, objects are not accessible to other files by default
+- Explicitly tell the module system which parts of the code to be exported by using module.exports or exports
+- To import code into a file, use the require() function
+- File extension for this module system is '.js'
 
 Module Scope
-    - Each module has its own private scope so 2 modules containing same variable-name or function-name imported in one Javascript file does not create conflict
-    - It is done by using IIFE(Immediately Invoked Function Expression)
+- Each module has its own private scope so 2 modules containing same variable-name or function-name imported in one Javascript file does not create conflict
+- It is done by using IIFE(Immediately Invoked Function Expression)
 
 Module Wrapper
-    - Nodejs wraps each module with an IIFE with 5 parameters:
-        - exports
-        - require
-        - module
-        - __dirname
-        - __filename
+- Nodejs wraps each module with an IIFE with 5 parameters:
+    - exports
+    - require
+    - module
+    - __dirname
+    - __filename
 
 Module Caching
-    - Suppose a module contains a class and its exporting object (or instance) of the class
-    - Then whenever the module is imported (or called) into a file for the first time, the instance of the class will get cached or saved
-    - Then if we call the same module again in the file, nodejs will return the same reference to the instance of the class in the module which has been cached
-    - It creates a problem when we want a new instance of the same class from the imported module in the file
-    - To solve this, we can export the class itself in the file and then create different instances based on our requirements
+- Suppose a module contains a class and its exporting object (or instance) of the class
+- Then whenever the module is imported (or called) into a file for the first time, the instance of the class will get cached or saved
+- Then if we call the same module again in the file, nodejs will return the same reference to the instance of the class in the module which has been cached
+- It creates a problem when we want a new instance of the same class from the imported module in the file
+- To solve this, we can export the class itself in the file and then create different instances based on our requirements
+
+
+Module Import and Export Patterns
+- There are 5 types of Patterns for importing and exporting modules:
+1.  Export: const funcName = () => {};
+            module.exports = funcName;
+    Import: const funcName = require('./moduleName);
+2.  Export: module.exports = () => {};
+    Import: const funcName = require('./moduleName);
+3.  Export: const funcName1 = () => {};
+            const funcName2 = () => {};
+            module.exports = { funcName1, funcName2 };
+    Import: const moduleName = require('./moduleName);
+            const { funcName1, funcName2 } = moduleName;
+4.  Export: module.exports.funcName1 = () => {};
+            module.exports.funcName2 = () => {};
+    Import: const moduleName = require('./moduleName);
+            const { funcName1, funcName2 } = moduleName;
+5.  Export: exports.funcName = () => {};
+    Import: const funcName = require('./moduleName);
+- Always use module.exports instead of only exports because it creates a barrier in these two objects leading to errors in importing the functions from the module
