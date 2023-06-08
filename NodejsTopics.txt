@@ -37,22 +37,60 @@
         - It makes sure the async task gets executed in the right order
  
 
-4. NodeJS
-- NodeJS is an open-source, cross-platform Javascript Runtime environment
+4. Nodejs
+- Nodejs is an open-source, cross-platform Javascript Runtime environment
 - It is not a language and not even a framework
 - It is capable of executing Javascript code outside the Browser
 - It can execute not only the Standard ECMAScript languagebut also new features that are available through C++ bindings using the V8 Engine
 - It consists of C++ files which form the core features and Javascript files which expose common utilities and some of the C++ features for easier consumption
 - It is used to build complex and powerful applications
-- NodeJS Runtime contains:
+- Nodejs Runtime contains:
     - Dependencies - V8, libuc, zlib, etc
     - C/C++ Features
     - JS Library
-- There are 2 ways to execute Javascript in NodeJS:
+- There are 2 ways to execute Javascript in Nodejs:
     - REPL (Read Evaluate Print Loop)
     - Put the code in a Javascript file and run it in terminal
 
 
-5. Browser Vs NodeJS
+5. Browser Vs Nodejs
 - Browser contains DOM, Web Platform APIs like cookies, and objects like document and window whereas Nodejs contains APIs like filesystem access functionality
-- With NodeJS, you control the environment, whereas with a Browser, users have the control
+- With Nodejs, you control the environment, whereas with a Browser, users have the control
+
+
+=================
+==== MODULES ====
+=================
+
+- A module is an encapsulated and reusable chunk of code that has its own context
+- In Nodejs, each file is a module that is isolated by default
+- To load a module into another file, we use require function
+- When the main file is executed, the code in the module is also executed
+- If a file we are requiring is a Javascript file, then we can skip specifying the .js extension and nodejs will infer it on our behalf
+
+There are 3 types of Modules:
+    - Local Modules - Modules that we create as a developer in our application
+    - Built-in Modules - Modules that Nodejs ships with out of the box
+    - Third party Modules - Modules created by other developers that we can use in out application
+
+CommonJS
+    - It is a standard that states how a module should be structured and shared
+
+Module Scope
+    - Each module has its own private scope so 2 modules containing same variable-name or function-name imported in one Javascript file does not create conflict
+    - It is done by using IIFE(Immediately Invoked Function Expression)
+
+Module Wrapper
+    - Nodejs wraps each module with an IIFE with 5 parameters:
+        - exports
+        - require
+        - module
+        - __dirname
+        - __filename
+
+Module Caching
+    - Suppose a module contains a class and its exporting object (or instance) of the class
+    - Then whenever the module is imported (or called) into a file for the first time, the instance of the class will get cached or saved
+    - Then if we call the same module again in the file, nodejs will return the same reference to the instance of the class in the module which has been cached
+    - It creates a problem when we want a new instance of the same class from the imported module in the file
+    - To solve this, we can export the class itself in the file and then create different instances based on our requirements
