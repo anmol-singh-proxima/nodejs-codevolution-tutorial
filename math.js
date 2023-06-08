@@ -1,4 +1,4 @@
-// Module Exports Patterns
+/* Module Export Patterns */
 const add = (a, b) => {
   return a + b;
 };
