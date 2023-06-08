@@ -1,4 +1,3 @@
-
 1. ECMAScript
 - ECMAScript is the Core of Javascript
 - Javascript = ECMAScript + APIs + other features
@@ -49,3 +48,11 @@
     - Dependencies - V8, libuc, zlib, etc
     - C/C++ Features
     - JS Library
+- There are 2 ways to execute Javascript in NodeJS:
+    - REPL (Read Evaluate Print Loop)
+    - Put the code in a Javascript file and run it in terminal
+
+
+5. Browser Vs NodeJS
+- Browser contains DOM, Web Platform APIs like cookies, and objects like document and window whereas Nodejs contains APIs like filesystem access functionality
+- With NodeJS, you control the environment, whereas with a Browser, users have the control
