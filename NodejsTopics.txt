@@ -1,0 +1,51 @@
+
+1. ECMAScript
+- ECMAScript is the Core of Javascript
+- Javascript = ECMAScript + APIs + other features
+- It started in 1996 as a ECMAScript Standard
+- There are 6 versions of ECMAScript
+    - ECMAScript 1 - 1997
+    - ECMAScript 2 - 1998
+    - ECMAScript 3 - 1999
+    - ECMAScript 4 - Never Released
+    - ECMAScript 5 - 2009
+    - ECMAScript 6 - 2015 (ES6)
+
+
+2. V8 Javascript Engine
+- A Javascript engine helps in compiling and executing of a Javascript program
+- One such engine is V8 Engine which is written in C++, and it is developed by Google and used in Google Chrome
+
+
+3. Javascript Runtime
+- A Javascript Runtime is an environment which provides all the neccessary components in order to use and run a Javascript program
+- Chrome contains one such Javascript Runtime
+- Chrome Javascript Runtime contains
+    - V8 Javascript Engine
+        - Memory - Heap Memory to store the variables in a Javascript program
+        - Call Stack - To run Javascript program
+    - Web Browser APIs
+        - DOM
+        - Storage
+        - Promises
+        - Timers
+    - Queue
+        - Before any async task gets executed in JS, it waits in the Queue
+        - 2 kinds of Queue:
+            - Microstack Queue
+            - Callback/Task Queue
+    - Event Loop
+        - It makes sure the async task gets executed in the right order
+ 
+
+4. NodeJS
+- NodeJS is an open-source, cross-platform Javascript Runtime environment
+- It is not a language and not even a framework
+- It is capable of executing Javascript code outside the Browser
+- It can execute not only the Standard ECMAScript languagebut also new features that are available through C++ bindings using the V8 Engine
+- It consists of C++ files which form the core features and Javascript files which expose common utilities and some of the C++ features for easier consumption
+- It is used to build complex and powerful applications
+- NodeJS Runtime contains:
+    - Dependencies - V8, libuc, zlib, etc
+    - C/C++ Features
+    - JS Library
