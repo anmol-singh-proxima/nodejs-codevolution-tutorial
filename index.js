@@ -31,3 +31,6 @@ console.log("Data:", data)
 
 /* BuiltIn Modules */
 require('./8_BuiltIn_Modules/pathModule')
+
+/* CallBack function */
+require('./9_CallBacks/callBackFunction')

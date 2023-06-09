@@ -196,3 +196,25 @@
     - path.isAbsolute("[path]")
     - path.join("[file/dir/path]", "[file/dir/path]", ...)
     - path.resolve("[file/dir/path]", "[file/dir/path]", ...)
+
+
+12. Callbacks
+- In Javascript, functions are first class objects
+- A function can be passed as an argument to a function
+- A function can also be returned as values from other function
+- Callback Function - A function which is passed as argument or returned as values from other function is called a callBack function
+- Higher Order Function - A function to which a callBack is passed as an argument is called a Higher Order Function
+    function callBack () {}
+    higherOrderFunction(callBack) {
+        ...
+        callBack()
+    }
+- 2 Types of Callbacks:
+    - Synchronous Callback
+    - Asynchronous Callback
+- Synchronous Callback
+    - A callBack which is executed immediately is called a Synchronous Callback
+- Asynchronous Callback
+    - A callBack that is often used to continue or resume code execution after an asynchronous operation has completed
+    - Callbacks are used to delay the execution of a function until a particular time or event has occurred
+    - Nodejs has an asynchronous behaviour to prevent blocking of execution, ex- reading data from a file, fetching data from a database or handling a network request.
