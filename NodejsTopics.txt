@@ -160,3 +160,10 @@
                 const { funcName1, funcName2 } = moduleName;
                 OR
                 import { funcName1, funcName2 } from 'moduleName'
+
+
+9. Importing JSON
+- Importing Json file similar to importing a module
+    const data = require('[json_file]')
+- Then this data can be used as either an object or an array based on the data stored in json_file.
+

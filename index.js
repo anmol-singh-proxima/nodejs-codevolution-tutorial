@@ -24,3 +24,7 @@ const math = require("./5_Import_Export_Patterns/math");
 console.log(math.add(20, 10));
 console.log(math.sub(20, 10));
 console.log(math.mul(20, 10));
+
+/* Import JSON */
+const data = require("./7_Import_Json/data.json")
+console.log("Data:", data)
