@@ -29,8 +29,10 @@ console.log(math.mul(20, 10));
 const data = require("./7_Import_Json/data.json")
 console.log("Data:", data)
 
-/* BuiltIn Modules */
-require('./8_BuiltIn_Modules/pathModule')
-
 /* CallBack function */
 require('./9_CallBacks/callBackFunction')
+
+/* BuiltIn Modules */
+require('./8_BuiltIn_Modules/pathModule')
+require('./8_BuiltIn_Modules/eventsModule')
+require('./8_BuiltIn_Modules/ExtendingEventEmitter/main')

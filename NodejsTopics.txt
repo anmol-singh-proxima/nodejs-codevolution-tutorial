@@ -218,3 +218,17 @@
     - A callBack that is often used to continue or resume code execution after an asynchronous operation has completed
     - Callbacks are used to delay the execution of a function until a particular time or event has occurred
     - Nodejs has an asynchronous behaviour to prevent blocking of execution, ex- reading data from a file, fetching data from a database or handling a network request.
+
+
+13. Built-in Module: events
+- The events module allow us to work with events in nodejs
+- An event is an action or an occurrence that has happened in our application that we can respond to
+- Using the events module, we can dispatch our own custom events and respond to those custom events in a non-blocking manner
+- The events module export an 'EventEmitter' class, and we can create an object of this class and use it in out file
+- The object has 2 functions:
+    - emitter.on() - to register an event
+    - emitter.emit() - to make that event occur
+- The on() function has an event-name as the first argument and the callBack as the second argument
+- The emit() function has the event-name as the first argument and it can pass other arguments to further pass them to the callbacks in on() function
+- Whenever the emit() function executes, the event described as first argument is occurred and the on() function which has the same event-name will execute the callback within it. 
+- This EventEmitter class can be extended to another class and can be made use of the extended events functionality along with the functionality of the Child class
