@@ -28,3 +28,6 @@ console.log(math.mul(20, 10));
 /* Import JSON */
 const data = require("./7_Import_Json/data.json")
 console.log("Data:", data)
+
+/* BuiltIn Modules */
+require('./8_BuiltIn_Modules/pathModule')

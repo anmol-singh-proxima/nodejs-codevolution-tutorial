@@ -164,6 +164,35 @@
 
 9. Importing JSON
 - Importing Json file similar to importing a module
-    const data = require('[json_file]')
+    - const data = require('[json_file]')
 - Then this data can be used as either an object or an array based on the data stored in json_file.
 
+
+10. Built-in Modules
+- Modules that are shipped with Nodejs
+- These are also referred as Core modules
+- Need to import the modules before using them in our files
+- The 5 common Built-in modules are:
+    - path
+    - events
+    - fs
+    - stream
+    - http
+- To import Built-in modules, we need to prefix the name of module with 'node:' in require(), but 'node:' prefix is optional
+    - const module = require('node:[module_name]')
+- node: Protocol
+    - Makes it perfectly clear that import is a Nodejs built-in module
+    - Makes the import identifier a valid absolute URL
+    - Avoids conflicts for future Nodejs biult-in modules
+
+
+11. Built-in Module: path
+- It is a module which provides utilities to work with files, directories and paths
+- There are a few methods in it:
+    - path.basename("[path]")
+    - path.extname("[file/dir/path]")
+    - path.parse("[file/dir/path]")
+    - path.format(path.parse("[file/dir/path]"))
+    - path.isAbsolute("[path]")
+    - path.join("[file/dir/path]", "[file/dir/path]", ...)
+    - path.resolve("[file/dir/path]", "[file/dir/path]", ...)
