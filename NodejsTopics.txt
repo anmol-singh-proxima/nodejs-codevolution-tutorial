@@ -318,3 +318,13 @@
     - Pipes are a way of connecting readableStream to writeableStream
     - It omits the use of event-listeners on the readableStream (as mentioned above)
     - We can chain the pipe() where the destination stream must be either Readable, Duplex or Transform
+
+
+15. Built-in Module: http
+- 'node:http' module helps the nodejs to receive and send requests and responses respectively via HTTP (Hyper Text Transfer Protocol) Protocol which is one of the protocol to send the data over the network
+- 'node:http' module is used to create a server on nodejs
+- The server is created using http.createServer() method
+- http.createServer() method internally uses EventEmitter so a callBack is passed to this function
+- This callBack executes whenever an http request has been made to the server only after the server has started listening to the requests
+- This callBack contains two arguments: a request object and a response object
+- These arguments are passed automatically to the function whenever a request is listened on the server
