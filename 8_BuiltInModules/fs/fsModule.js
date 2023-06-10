@@ -3,8 +3,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 // Defining file names
-const readFilename = path.join(__dirname, "ReadWriteFiles", "readFile.txt");
-const writeFilename = path.join(__dirname, "ReadWriteFiles", "writeFile.txt");
+const readFilename = path.join(__dirname, "readFile.txt");
+const writeFilename = path.join(__dirname, "writeFile.txt");
 
 // Reading File Synchronously
 const fileContent = fs.readFileSync(readFilename, "utf-8");

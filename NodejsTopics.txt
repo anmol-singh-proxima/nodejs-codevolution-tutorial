@@ -297,3 +297,24 @@
 - 'node:fs/promises'
     - This is another module for doing Asynchronous file operations
     - This module performs the file operations with Promises and async-await instead of callBacks
+
+
+14. Built-in Module: streams
+- This module is not used explicity by the developers
+- This module is used by other node-modules such as node:fs
+- This module internally extends EventEmitter class of the node:events module
+- Process of using Streams
+    - We need to create a stream called readableStream for reading the data from one file
+    - Then we need to create a stream called writeableStream for writing the data to another file
+    - Then we need to create an event-listener on the readableStream to get the chunk from the stream
+    - Then we can write the chunk using writeableStream into the file
+- We can define the number of bytes in a chunk of the stream with the property 'highWaterMark'
+- Types of streams:
+    - Readable stream from which data can be read
+    - Writeable stream to which we can write the data
+    - Duplex streams that are both Readable and Writeable
+    - Transform streams that can modify or transform the data as it is written and read
+- Pipes:
+    - Pipes are a way of connecting readableStream to writeableStream
+    - It omits the use of event-listeners on the readableStream (as mentioned above)
+    - We can chain the pipe() where the destination stream must be either Readable, Duplex or Transform

@@ -3,7 +3,7 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 
 // Defining filename
-const readFilename = path.join(__dirname, "ReadWriteFiles", "readFile.txt");
+const readFilename = path.join(__dirname, "readFile.txt");
 
 // Reading File Asynchronously Using Promises
 fs.readFile(readFilename, "utf-8")
