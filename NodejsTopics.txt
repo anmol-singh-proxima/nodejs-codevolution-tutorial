@@ -286,3 +286,14 @@
 - This EventEmitter class can be extended to another class and can be made use of the extended events functionality along with the functionality of the Child class
 
 
+13. Built-in Module: fs
+- 'fs' module is responsible for file operations in nodejs i.e. reading and writing of the files
+- The file operations are done both Synchronously and Asynchronously
+- The functions are:
+    - fs.readFileSync(filename, encoding) - reading the file Synchronously
+    - fs.readFile(filename, encoding, callBack(error, data) {}) - reading the file Asynchronously and exceute the callBack after the operation
+    - fs.writeFileSync(filename, file-content) - writing the file with file-content Synchronously
+    - fs.writeFile(filename, file-content, { flag: 'a' }, callBack(error) {}) - writing the file Asynchronously with the file-content and a flag is provided for mentioning the write or append mode and a callBack to execute after the operation is completed
+- 'node:fs/promises'
+    - This is another module for doing Asynchronous file operations
+    - This module performs the file operations with Promises and async-await instead of callBacks

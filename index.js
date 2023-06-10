@@ -32,10 +32,8 @@ console.log("Data:", data);
 /* CallBack function */
 require("./9_CallBacks/callBackFunction");
 
-/* BuiltIn Modules */
-require("./8_BuiltIn_Modules/pathModule");
-require("./8_BuiltIn_Modules/eventsModule");
-require("./8_BuiltIn_Modules/ExtendingEventEmitter/main");
-
 /* Streams and Buffers */
 require("./10_StreamsAndBuffers/buffers");
+
+/* BuiltIn Modules */
+require("./8_BuiltInModules/index");
