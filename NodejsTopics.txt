@@ -62,6 +62,72 @@
 - With Nodejs, you control the environment, whereas with a Browser, users have the control
 
 
+
+
+================================
+======== NodeJS Detours ========
+================================
+
+1. Callbacks
+- In Javascript, functions are first class objects
+- A function can be passed as an argument to a function
+- A function can also be returned as values from other function
+- Callback Function - A function which is passed as argument or returned as values from other function is called a callBack function
+- Higher Order Function - A function to which a callBack is passed as an argument is called a Higher Order Function
+    function callBack () {}
+    higherOrderFunction(callBack) {
+        ...
+        callBack()
+    }
+- 2 Types of Callbacks:
+    - Synchronous Callback
+    - Asynchronous Callback
+- Synchronous Callback
+    - A callBack which is executed immediately is called a Synchronous Callback
+- Asynchronous Callback
+    - A callBack that is often used to continue or resume code execution after an asynchronous operation has completed
+    - Callbacks are used to delay the execution of a function until a particular time or event has occurred
+    - Nodejs has an asynchronous behaviour to prevent blocking of execution, ex- reading data from a file, fetching data from a database or handling a network request.
+
+
+2. Character Sets and Encoding
+- Formats of Data
+    - Binary Data
+        - Collection of 0s and 1s
+        - Each of this 0 or 1 is called as a Binary digit or a Bit
+    - Decimal Numbers
+        - Collection of numbers from 0 to 9
+    - Characters
+        - Collection of alphabetic characters i.e. a-z and A-Z
+        - Collection of special characters on keyboard
+- Storage of data in Computers
+    - Computers store and represent the data in Binary format
+    - First, the Characters are converted into Decimal Numbers
+    - Then the Decimal Numbers are converted into Binary data
+- Character Sets
+    - Computers assign a number to every single character on keyboard which is called Character code
+    - We can get the character code by using charCodeAt() function
+        - for e.g. 'a'.charCodeAt() will give 97
+    - This assignment is done by using Character Sets
+    - Character Sets are the predefined list of characters represented by Numbers
+    - Popular Character Sets - UNICODE and ASCII
+- Character Encoding
+    - Character encoding dictates how to represent a number in the character set as binary data before it can store it in a computer
+    - It dictates how many bits to be used to represent a number
+    - Popular Character encoding system is UTF-8
+
+
+3. Streams and Buffers
+- A stream is a sequence of data that is being moved from one point to another over time
+- In nodejs, the idea is to process streams of data in chunks as they arrive instead of waiting for the entire data to be available before processing
+- It prevents unneccessary data downloads and memory usage
+- Buffer is a storage area in Nodejs Runtime to store the stream of data before sending it for processing
+- Nodejs cannot control the pace at which data arrives in the stream
+- It can only decide when is the right time to send the data for processing
+
+
+
+ 
 =========================
 ======== MODULES ========
 =========================
@@ -198,29 +264,7 @@
     - path.resolve("[file/dir/path]", "[file/dir/path]", ...)
 
 
-12. Callbacks
-- In Javascript, functions are first class objects
-- A function can be passed as an argument to a function
-- A function can also be returned as values from other function
-- Callback Function - A function which is passed as argument or returned as values from other function is called a callBack function
-- Higher Order Function - A function to which a callBack is passed as an argument is called a Higher Order Function
-    function callBack () {}
-    higherOrderFunction(callBack) {
-        ...
-        callBack()
-    }
-- 2 Types of Callbacks:
-    - Synchronous Callback
-    - Asynchronous Callback
-- Synchronous Callback
-    - A callBack which is executed immediately is called a Synchronous Callback
-- Asynchronous Callback
-    - A callBack that is often used to continue or resume code execution after an asynchronous operation has completed
-    - Callbacks are used to delay the execution of a function until a particular time or event has occurred
-    - Nodejs has an asynchronous behaviour to prevent blocking of execution, ex- reading data from a file, fetching data from a database or handling a network request.
-
-
-13. Built-in Module: events
+12. Built-in Module: events
 - The events module allow us to work with events in nodejs
 - An event is an action or an occurrence that has happened in our application that we can respond to
 - Using the events module, we can dispatch our own custom events and respond to those custom events in a non-blocking manner
@@ -232,3 +276,5 @@
 - The emit() function has the event-name as the first argument and it can pass other arguments to further pass them to the callbacks in on() function
 - Whenever the emit() function executes, the event described as first argument is occurred and the on() function which has the same event-name will execute the callback within it. 
 - This EventEmitter class can be extended to another class and can be made use of the extended events functionality along with the functionality of the Child class
+
+
