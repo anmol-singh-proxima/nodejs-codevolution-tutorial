@@ -63,7 +63,6 @@
 
 
 
-
 ================================
 ======== NodeJS Detours ========
 ================================
@@ -125,6 +124,15 @@
 - Nodejs cannot control the pace at which data arrives in the stream
 - It can only decide when is the right time to send the data for processing
 
+
+4. Asynchronous Javascript
+- Javascript is Synchronous, Blocking and Single-threaded in nature
+- This nature of Javascript is not beneficial for applications
+- The non-blocking and asynchronous behaviour is made possible by Web Browsers in front-end and Nodejs in backend by using:
+    - setTimeout(), setInterval()
+    - addEventListeners()
+    - callBacks, Promises, async-await
+- This style of programming where we don't block the main Javascript thread is fundamental to nodejs
 
 
  
