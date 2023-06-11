@@ -341,3 +341,8 @@
         - Read the html file and pass it to response object
     - HTML Template
         - This is nothing but the HTML response with String replacement using html.replace() method
+
+
+- http routing
+    - We can get the url from the request object and based on that we can send the response via response object
+    - http routing is nothing but sending the responses based on the routes sent as requests from the client

@@ -40,11 +40,37 @@ function htmlResponse(res) {
   res.end(html);
 }
 
+/* Function for performing http routing */
+function httpRouting(req, res) {
+  console.log(req.url, req.method);
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("HOME PAGE");
+  } else if (req.url === "/about") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("ABOUT PAGE");
+  } else if (req.url === "/api") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        teamLeader: "Captain America",
+        spy: "Black Widow",
+        god: "Thor",
+        strong: "Hulk",
+      })
+    );
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("PAGE NOT FOUND!");
+  }
+}
+
 /* Creating an instance of the http server */
 const server = http.createServer((req, res) => {
   // plainResponse(res);
   // jsonResponse(res);
-  htmlResponse(res);
+  // htmlResponse(res);
+  httpRouting(req, res);
 });
 
 /* Adding listener to the server instance on port 5000 */
