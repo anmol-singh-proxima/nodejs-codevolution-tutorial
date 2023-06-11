@@ -50,8 +50,8 @@
 - It is used to build complex and powerful applications
 - Nodejs Runtime contains:
     - Dependencies - V8, libuc, zlib, etc
-    - C/C++ Features
-    - JS Library
+    - C/C++ Features - File-system access, Networking, etc
+    - JS Libraries - Functions and Utilities to tap into C/C++ features
 - There are 2 ways to execute Javascript in Nodejs:
     - REPL (Read Evaluate Print Loop)
     - Put the code in a Javascript file and run it in terminal
@@ -63,9 +63,9 @@
 
 
 
-================================
-======== NodeJS Detours ========
-================================
+==============================================
+======== NodeJS Topics Before Modules ========
+==============================================
 
 1. Callbacks
 - In Javascript, functions are first class objects
@@ -136,9 +136,9 @@
 
 
  
-=========================
-======== MODULES ========
-=========================
+===================================
+======== Modules in NodeJS ========
+===================================
 
 1. What is a Module?
 - A module is an encapsulated and reusable chunk of code that has its own context
@@ -346,3 +346,29 @@
 - http routing
     - We can get the url from the request object and based on that we can send the response via response object
     - http routing is nothing but sending the responses based on the routes sent as requests from the client
+
+
+
+========================================
+======== Nodejs: Under the hood ========
+========================================
+
+
+1. libuv
+- libuv is a cross platform open source library written in C
+- It handles asynchronous non-blocking operations in Nodejs
+- It does it by using Thread Pool and Event Loop
+
+2. Thread Pool
+- It is one of the features of libuv
+- It is nothing but the collection of many threads
+- Whenever the main thread in Nodejs encounters asynchronous task, it offloads that task to thread pool in libuv
+- Then the main thread continues to execute the further code and the thread pool complete the task and then send the response back to main thread and executes the callBack
+- The tasks offloaded to the Thread Pool are done synchronously in the thread pool where each task is done by a their own single thread from Thread Pool, but to the main thread it seems they are executing asynchronously
+- Thread Pool size
+    - In Thread Pool, by default, there are only 4 threads 
+    - If we give 4 asynchronous tasks at any instance then the tasks will be executed parallely in Thread Pool
+    - If we give 5 or more tasks then they will start working in batches of 4 at a time
+    - But we can increase the size of the Thread pool by using this variable
+        process.env.UV_THREADPOOL_SIZE = [thread_pool_size]
+    - But we can increase the number of threads upto the limit of the number CPU cores in the machine, because beyond that limit the CPU has to adjust the [more] number of threads to the [less] number of CPU cores which will be time consuming

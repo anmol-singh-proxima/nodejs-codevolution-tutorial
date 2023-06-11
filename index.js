@@ -56,5 +56,8 @@ function builtInModules() {
   require("./8_BuiltInModules/index");
 }
 
+/* libuv: Thread Pool */
+require("./11_libuv/threadPool");
+
 /* Functions calls to execute code block */
-builtInModules();
+// builtInModules();
