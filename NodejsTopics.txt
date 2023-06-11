@@ -328,3 +328,16 @@
 - This callBack executes whenever an http request has been made to the server only after the server has started listening to the requests
 - This callBack contains two arguments: a request object and a response object
 - These arguments are passed automatically to the function whenever a request is listened on the server
+
+- http Responses
+    - Plain Text Response
+        - "Content-Type": "text/plain"
+        - res.end([some-content])
+    - JSON Response
+        - "Content-Type": "application/json"
+        - res.end(JSON.stringify([json-abject]))
+    - HTML Response
+        - "Content-Type": "text/html"
+        - Read the html file and pass it to response object
+    - HTML Template
+        - This is nothing but the HTML response with String replacement using html.replace() method
