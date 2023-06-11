@@ -358,6 +358,19 @@
 - libuv is a cross platform open source library written in C
 - It handles asynchronous non-blocking operations in Nodejs
 - It does it by using Thread Pool and Event Loop
+- The asynchronous operations are handled in 2 ways:
+    - Native Async mechanism
+    - Thread Pool
+- Native Async mechanism
+    - Whenever possible, libuv will use Native Async mechanism in the OS to avoid blocking the main thread
+    - Since this is the part of the kernel, there is different mechanism for different OS
+    - Native Async mechanism for different OS:
+        - Linux - epoll
+        - MacOS - Kqueue
+        - Windows - IO Completion Port
+    - Relying on the Native Async mechanism makes nodejs scalable as the only limitation is the OS kernel
+    - Ex - Network I/O
+
 
 2. Thread Pool
 - It is one of the features of libuv
@@ -372,3 +385,12 @@
     - But we can increase the size of the Thread pool by using this variable
         process.env.UV_THREADPOOL_SIZE = [thread_pool_size]
     - But we can increase the number of threads upto the limit of the number CPU cores in the machine, because beyond that limit the CPU has to adjust the [more] number of threads to the [less] number of CPU cores which will be time consuming
+
+
+3. Network Input/Output
+- Network I/O is done by Native Async mechanism of Nodejs
+- For performing Network operations we can send an https request on network using http.request()
+- http.request is a network input/output operation and not a CPU-bound operation
+- It is an asynchronous task but it does not uses Thread Pool
+- It does not get affected by the number of CPU cores in the machine
+- libuv delegates this task of http.request() to the operating system kernel and whenever possible, it will poll the kernel and check if the request has completed
