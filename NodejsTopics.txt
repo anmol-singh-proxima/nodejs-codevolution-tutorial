@@ -349,9 +349,9 @@
 
 
 
-========================================
-======== Nodejs: Under the hood ========
-========================================
+==========================================
+======== libuv: Nodejs Dependency ========
+==========================================
 
 
 1. libuv
@@ -394,3 +394,51 @@
 - It is an asynchronous task but it does not uses Thread Pool
 - It does not get affected by the number of CPU cores in the machine
 - libuv delegates this task of http.request() to the operating system kernel and whenever possible, it will poll the kernel and check if the request has completed
+
+
+4. Async Code execution in Nodejs
+- Nodejs has V8 engine which contains Memory Heap and Call Stack
+- Memory Heap is the place where all the variables and functions gets stored while the execution of the programme
+- Call Stack is the place where the function gets listed before execution one after the other as the code proceeds
+- At first, the main thread of the Javascript gets loaded into Global Scope as the Global() function gets listed up in the Call Stack
+- Then, as and when the function call happens the function gets stacked up in the Call Stack and they gets executed in the 'First In Last Out' fashion in the main thread using Memory Heap
+- Once a function gets executed, the function gets removed from the list in the Call Stack and so on.
+- Whenever any Asynchronous task comes, the Async function gets loaded up in the Call Stack, then the main thread offloads this async function along with the CallBack function to the 'libuv' library
+- libuv executes the Async function via one of the thread in its Thread Pool and send back the CallBack function back to the main thread with the neccessary arguments
+- Then the main thread executes this CallBack function.
+- While this Async task was getting executed in the libuv, the main thread keep on executing the code.
+- Once all the functions gets executed, the main thread also comes out of the Global Scope, and the Global() function gets removed from the Call Stack.
+
+
+5. Event Loop
+- Event Loop is a loop which is alive till the Javascript program executes in the Nodejs Runtime
+- It contains 6 Queues which executes one by one, and each queue holds one or more CallBack functions which eventually executes in the Call-Stack
+- All these Callback functions are different in each Queue
+- In each iteration in the Event Loop, each of these queues executes in a certain order
+- The Queues are:
+    - microtask Queue: nextTick queue - contains the callBacks assiociated with process.nextTick (specific to nodejs)
+    - microtask Queue: promise queue - contains the callBacks assiociated with the promises
+    - timer queue - contains the callBacks assiociated with setTimeout/setInterval
+    - i/o queue - contains the callBacks assiociated with the async operations like methods in fs and https modules 
+    - check queue - contains the callBacks assiociated with setImmediate (specific to nodejs)
+    - close queue - contains the callBacks assiociated with close events of an async task
+- Here, the timer queue, i/o queue, check queue and close queue are part of libuv but not the 2 microtask queues
+
+
+6. Event Loop: Execution Order
+- Synchronous code takes priority over Asynchronous code
+- Only after the Call-Stack is empty, the event loop comes into picture
+- Within the Event-Loop, there is a priority order to execute the callBacks (or tasks) in the queues
+- The callBacks in the Queues are executed in the following order
+    1. microtask queue: first nextTick queue then promise queue
+    2. timer queue
+    3. microtask queue: first nextTick queue then promise queue
+    4. i/o queue
+    5. microtask queue: first nextTick queue then promise queue
+    6. check queue
+    7. microtask queue: first nextTick queue then promise queue
+    8. close queue
+    9. microtask queue: first nextTick queue then promise queue
+- The above order keeps on repeating for every iteration (or loop) till all the callBacks are executed in all the queues
+- Once all the callBacks are executed and there is no more code to process, the Event-Loop exists
+- If all the callBacks in all the queues are ready at the same time, the order for execution still maintains
