@@ -406,7 +406,8 @@
 - Whenever any Asynchronous task comes, the Async function gets loaded up in the Call Stack, then the main thread offloads this async function along with the CallBack function to the 'libuv' library
 - libuv executes the Async function via one of the thread in its Thread Pool and send back the CallBack function back to the main thread with the neccessary arguments
 - Then the main thread executes this CallBack function.
-- While this Async task was getting executed in the libuv, the main thread keep on executing the code.
+- While this Async task was getting executed in the libuv, the main thread keeps on executing the code.
+- Once all the Synchronous code gets executed in the program, then only the callBacks from Asynchronous code gets executed
 - Once all the functions gets executed, the main thread also comes out of the Global Scope, and the Global() function gets removed from the Call Stack.
 
 
@@ -442,3 +443,11 @@
 - The above order keeps on repeating for every iteration (or loop) till all the callBacks are executed in all the queues
 - Once all the callBacks are executed and there is no more code to process, the Event-Loop exists
 - If all the callBacks in all the queues are ready at the same time, the order for execution still maintains
+
+
+7. process.nextTick()
+- Use of process.nextTick() is discouraged since as it can cause the rest of the Event-Loop to starve
+- If you endlessly call process.nextTick(), the control will never pass the Microtask queue
+- Two main reasons to use process.nextTick()
+    - To allow users to handle errors, cleanup any then un-needed resources, or perhaps try the request again before the Event-Loop continues
+    - To allow a callBack to run after the Call-Stack has unwound but before the Event-Loop continues

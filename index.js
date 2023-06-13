@@ -57,7 +57,16 @@ function builtInModules() {
 }
 
 /* libuv: Thread Pool */
-require("./11_libuv/threadPool");
+function threadPool() {
+  require("./11_libuv/threadPool");
+}
 
-/* Functions calls to execute code block */
+/* Event Loop */
+function eventLoop() {
+  require('./12_EventLoop/eventLoop')
+}
+
+/* Function calls to execute code block */
 // builtInModules();
+// threadPool();
+eventLoop();
