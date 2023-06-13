@@ -443,6 +443,7 @@
 - The above order keeps on repeating for every iteration (or loop) till all the callBacks are executed in all the queues
 - Once all the callBacks are executed and there is no more code to process, the Event-Loop exists
 - If all the callBacks in all the queues are ready at the same time, the order for execution still maintains
+- Here, while executing the callBacks in the timer queue, i/o queue, check queue and close queue, after every callBack execution in any of these queues, the control keeps on going back to the microtask queue to check if there are any callBacks pending to execute
 
 
 7. process.nextTick()
@@ -451,3 +452,10 @@
 - Two main reasons to use process.nextTick()
     - To allow users to handle errors, cleanup any then un-needed resources, or perhaps try the request again before the Event-Loop continues
     - To allow a callBack to run after the Call-Stack has unwound but before the Event-Loop continues
+
+
+8. Timer Queue
+- It executes the callbacks in FIFO order
+- It's exactly not a queue but the MinHeap data-structure
+
+
