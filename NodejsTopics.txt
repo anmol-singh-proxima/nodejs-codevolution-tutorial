@@ -457,5 +457,14 @@
 8. Timer Queue
 - It executes the callbacks in FIFO order
 - It's exactly not a queue but the MinHeap data-structure
+- The C++ implementation for setTimeout() function is such that the timeout time for the callBack to wait before it start executing is maximum of either 1ms or (timeout-value * 1ms)
+- If the timeout-value passed as second argument is 0ms then also the timeout time is 1ms, so the setTimeout function has to always wait for atleast 1ms before starting the execution of the callBack
+- So if the setTimeout() callBack in Time Queue is executing along with the callBacks in any other Queue then the result is not certain even though the execution order is predefined in Event-Loop  
 
 
+9. I/O Queue
+- I/O Queue contains all the asynchronous task that we execute in the Javascript program
+- All the functions in the node:fs and node:http modules are queued in I/O queue for execution
+- I/O events are polled in the Event-Loop, and callBack functions are added into the I/O queue only the input/output operation is completed after polling
+- For the first iteration of the Event-Loop, the I/O polling takes place after the control has passed form I/O queue to the Check queue
+- Before the I/O polling happens, the I/O callbacks are not included in the I/O queue so for the first iteration of the Event-Loop the I/O queue will always be exmpty and the control will always go to the Check queue executing the setImmediate() in check queue

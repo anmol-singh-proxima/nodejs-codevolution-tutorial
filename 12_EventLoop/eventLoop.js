@@ -1,2 +1,3 @@
 // require('./microTasksQueue')
-require('./timerQueue')
+// require('./timerQueue')
+require('./inputOutputQueue')
