@@ -412,6 +412,7 @@
 
 
 5. Event Loop
+- Event Loop is a C-program which coordinates the execution of Synchronous and Asynchronous code in Nodejs
 - Event Loop is a loop which is alive till the Javascript program executes in the Nodejs Runtime
 - It contains 6 Queues which executes one by one, and each queue holds one or more CallBack functions which eventually executes in the Call-Stack
 - All these Callback functions are different in each Queue
@@ -443,7 +444,7 @@
 - The above order keeps on repeating for every iteration (or loop) till all the callBacks are executed in all the queues
 - Once all the callBacks are executed and there is no more code to process, the Event-Loop exists
 - If all the callBacks in all the queues are ready at the same time, the order for execution still maintains
-- Here, while executing the callBacks in the timer queue, i/o queue, check queue and close queue, after every callBack execution in any of these queues, the control keeps on going back to the microtask queue to check if there are any callBacks pending to execute
+- Here, while executing the callBacks in the timer queue and check queue, after every callBack execution in these two queues, the control keeps on going back to the microtask queue to check if there are any callBacks pending to execute in the microtask queue
 
 
 7. process.nextTick()
@@ -468,3 +469,8 @@
 - I/O events are polled in the Event-Loop, and callBack functions are added into the I/O queue only the input/output operation is completed after polling
 - For the first iteration of the Event-Loop, the I/O polling takes place after the control has passed form I/O queue to the Check queue
 - Before the I/O polling happens, the I/O callbacks are not included in the I/O queue so for the first iteration of the Event-Loop the I/O queue will always be exmpty and the control will always go to the Check queue executing the setImmediate() in check queue
+
+
+10. Close Queue
+- We queued the callBacks in Close queue by adding the event listeners to the close events
+- These close events can be emitted from node:fs module, node:http module or any other function in any other module
