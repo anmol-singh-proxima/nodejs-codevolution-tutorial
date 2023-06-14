@@ -66,7 +66,13 @@ function eventLoop() {
   require('./12_EventLoop/eventLoop')
 }
 
+/* npm packages */
+function npmPackage() {
+  require('./13_npm/npm-packages')
+}
+
 /* Function calls to execute code block */
 // builtInModules();
 // threadPool();
-eventLoop();
+// eventLoop();
+npmPackage()

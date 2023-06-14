@@ -45,7 +45,7 @@
 - Nodejs is an open-source, cross-platform Javascript Runtime environment
 - It is not a language and not even a framework
 - It is capable of executing Javascript code outside the Browser
-- It can execute not only the Standard ECMAScript languagebut also new features that are available through C++ bindings using the V8 Engine
+- It can execute not only the Standard ECMAScript language but also new features that are available through C++ bindings using the V8 Engine
 - It consists of C++ files which form the core features and Javascript files which expose common utilities and some of the C++ features for easier consumption
 - It is used to build complex and powerful applications
 - Nodejs Runtime contains:
@@ -474,3 +474,83 @@
 10. Close Queue
 - We queued the callBacks in Close queue by adding the event listeners to the close events
 - These close events can be emitted from node:fs module, node:http module or any other function in any other module
+
+
+
+===========================================
+======== npm: Node Package Manager ========
+===========================================
+
+1. npm
+- npm is the world's largest software library (registry)
+    - It contains code packages written by various developers
+    - It is a large public database of Javascript code that developers from all over the world can share and borrow
+- npm is also the software package manager
+    - developers publish and consume code packages
+    - it is a commmand line tool that lets us manage packages in a project
+    - npm is the default package manager for nodejs
+    - it is the package manager for Javascript programming language
+
+
+2. package.json
+- package.json is the npm's configuration file which describes how to interact with and run the package
+- it lives in the root directory of the package
+- it contains the various metadata relevant to the package
+- it is primarily used by npm CLI
+- Creation of package.json file for our package
+    $ npm init
+    - To create a package.json file for the project
+    $ npm init --yes
+    - For creation of the package.json with default values
+- Installation of remote packages
+    $ npm install [package-name]  // install the package
+    $ npm uninstall [package-name]  // uninstall the package
+- Using Third-party Module (or Package) in our project
+    const package = require('[package-name]')
+    package.function()
+- All the installed packages are listed in 'dependencies' property in package.json
+- Whenever, anyone else wants to install your package then they need to install all the dependencies listed down in the 'dependencies' property of package.json
+- To install all the packages
+    $ npm install
+- Global packages
+    - Packages that are utilities and tools rather than a dependency in the project are global packages
+    $ npm install -g [global-package]  // install Global Package
+    $ npm uninstall -g [global-package]  // uninstall Global Package
+
+
+3. Package Versioning
+- Package follows a system in Versioning called Semantic-Versioning (or SemVer)
+- Package versioning is done to keep track of all the changes made in the package
+- Package version is of the format x.y.z where
+    - x is the major version
+    - y is the minor version
+    - z is the patch version
+- Versioning Rules:
+    - When you fix a bug and the code stays backward-compatible, you increment patch version. For example, 1.1.1 to 1.1.2
+    - When you add a functionality and the code stays backward-compatible, you increment minor version. For example, 1.1.2 to 1.2.0
+    - When you make changes and the code no more remaind backward-compatible, you increment major version. For example, 1.2.0 to 2.0.0
+- SemVer:
+    - Semantic-Versioning always starts with 0.1.0
+    - 0.y.z is used for initial development
+    - When the code is production-ready, you increment the version to 1.0.0
+
+
+4. npm Scripts
+- An npm script is a convenient way to bundle common commands for use in project
+- They are typically entered in the command line in order to do something with the application
+- npm scripts are stored in a project's package.json file, giving access to everyone who has access to codebase
+- They also ensure that everyone is using the same command with the same options
+- npm scripts are executed using the command
+    $ npm run <script-name>
+
+
+5. Publish a package to npm registry
+- After creation of your custom package, you need to publish it on npmjs.com
+- Steps to publish the package:
+    - Go to 'https://npmjs.com' and create an account with username, email and password
+    - Go to command line in package root directory
+    $ npm adduser <username>
+    - Enter email and password in the prompt
+    $ npm publish
+    - Go to 'https://npmjs.com/package/<custom-package-name>'
+    - See and use the package in your new project
