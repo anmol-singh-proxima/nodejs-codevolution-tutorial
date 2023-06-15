@@ -71,8 +71,21 @@ function npmPackage() {
   require('./13_npm/npm-tools')
 }
 
+/* Cluster Module */
+function clusterModule() {
+  // require('./14_ClusterModule/no-cluster');
+  require('./14_ClusterModule/cluster');
+}
+
+/* Worker-Thread Module */
+function workerThread() {
+  require('./15_WorkerThreadModule/main-thread');
+}
+
 /* Function calls to execute code block */
 // builtInModules();
 // threadPool();
 // eventLoop();
-// npmPackage()
+// npmPackage();
+// clusterModule();
+workerThread();

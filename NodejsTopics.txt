@@ -582,3 +582,56 @@
 - Adding interactivity to CLI
     - Install inquirer@8.2.5 and use it in index.js
     $ npm install inquirer@8.2.5
+
+
+
+========================================================
+======== Cluster Module & Worker-Threads Module ========
+========================================================
+
+
+1. Problem in Nodejs
+- Node is single threaded i.e. no matter how many CPU Cores the system has, it always uses only one CPU Core
+- This is fine for I/O operations but if the code has long running and CPU intensive operations, the application might struggle from a performance point of view
+- To tackle this problem, Nodejs has Cluster Module
+
+
+2. Cluster Module
+- Cluster module enables the creation of the child processes (also called workers) that run simultaneously
+- All created workers share the same server port
+- How it works:
+    - When the main file starts running in the nodejs, it treats the file as Cluster-Master by default
+    - This Cluster-Master creates different workers based on the requirement
+    - Master is in charge of the workers i.e. starting, stopping, restarting, etc of the workers
+    - Workers are in charge of handling incoming requests, reading files, etc. 
+    - These workers are the instance of Nodejs itself where each worker gets its own Event-Loop, memory and V8 instance
+    - In this way, we can share the workload among the workers without having to block any incoming requests
+- Steps to implement in a file
+    const cluster = require('node:cluster')
+    if(cluster.isMaster) {
+        // create the workers
+        cluster.fork()
+        cluster.fork()
+    } else {
+        // Code to handle the incoming requests
+    }
+- To emulate the Cluster Module in a file without using Cluster Module
+    - Install pm2
+    $ npm install -g pm2
+    - Start the pm2 on the file
+    $ pm2 start <file-name> -i 0
+    - Stop the pm2
+    $ pm2 stop <file-name>
+
+
+3. Worker-Threads Module
+- Worker-Threads module also solve the above problem
+- It enables the use of threads that executes the Javascript in parallel
+- Code executed in a worker thread runs in a separate child process, preventing it from blocking the main thread
+- The Cluster-Module is used to run the multiple instances of Nodejs to distribute workloads whereas Worker-Thread module allows running multiple application threads within a single instance of Nodejs
+- When process isolation is not needed i.e. no separate instances of V8, Event-Loop and memory are needed, you should use Worker-Thread
+- Using 'node:worker_threads' module
+    - import Worker class from module
+    - create an instance of Worker class by passing the argument of a second file
+    - this second file will handle all the CPU intensive works and send back the result
+    - the worker instance will listen to the event 'message' and perform the further code in a callBack function
