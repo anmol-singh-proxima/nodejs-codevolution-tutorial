@@ -554,3 +554,31 @@
     $ npm publish
     - Go to 'https://npmjs.com/package/<custom-package-name>'
     - See and use the package in your new project
+
+
+6. Custom CLI
+- CLI is Command Line Tool
+- Creating CLI:
+    - Create a project folder and a package.json in it
+    - Create index.js and add
+        #!/usr/bin/env node - to tell OS which interpreter to use i.e. node
+    - In package.json, add a 'bin' property
+        "bin": {
+            "<project-name>": "[entry-point]"
+        }
+    - Install it in the system and run it
+        $ npm install -g
+        $ <project-name>
+- Adding options to CLI:
+    - Install yargs and use it in index.js
+    $ npm install yargs
+    - Add the following to index.js
+        const yargs = require('yargs')
+        const {argv} = yargs(process.argv)
+    - Pass the argument to function in index.js
+        functionName(argv.<argument-name>)
+    - Go to Command Line and pass the options
+        $ <project-name> --<argument-name>=<value>
+- Adding interactivity to CLI
+    - Install inquirer@8.2.5 and use it in index.js
+    $ npm install inquirer@8.2.5
