@@ -10,11 +10,13 @@ function moduleScope() {
   require("./2_Module_Scope/thor");
   require("./2_Module_Scope/hulk");
 }
+// moduleScope()
 
 /* Module Wrapper */
 function moduleWrapper() {
   require("./3_Module_Wrapper/iife");
 }
+// moduleWrapper()
 
 /* Module Caching */
 function moduleCaching() {
@@ -26,6 +28,7 @@ function moduleCaching() {
   const wanda = new Avenger("Scarlett Witch");
   console.log(wanda.getName());
 }
+// moduleCaching()
 
 /* Module Import Patterns */
 function moduleImportPatterns() {
@@ -40,16 +43,19 @@ function importJson() {
   const data = require("./7_Import_Json/data.json");
   console.log("Data:", data);
 }
+// importJson()
 
 /* CallBack function */
 function callBacks() {
   require("./9_CallBacks/callBackFunction");
 }
+// callBacks()
 
 /* Streams and Buffers */
 function streamsAndBuffers() {
   require("./10_StreamsAndBuffers/buffers");
 }
+streamsAndBuffers()
 
 /* BuiltIn Modules */
 function builtInModules() {
@@ -88,4 +94,4 @@ function workerThread() {
 // eventLoop();
 // npmPackage();
 // clusterModule();
-workerThread();
+// workerThread();

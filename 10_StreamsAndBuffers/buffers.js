@@ -1,6 +1,6 @@
 const buffer = new Buffer.from("Anmol Singh");
 
-buffer.write("Shruti");
+buffer.write("Priya");
 
 console.log(buffer);
 console.log(buffer.toJSON());

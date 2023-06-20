@@ -1,0 +1,46 @@
+{
+    "profile": [
+        {
+            "personal": {
+                "salutation": "Mr.",
+                "name": {
+                    "firstname": "Anmol",
+                    "middlename": "Kumar",
+                    "lastname": "Singh"
+                },
+                "age": 25,
+                "city": "Bangalore"
+            },
+            "education": [
+                {    
+                    "degree": "MCA",
+                    "college": "BMSCE",
+                    "cgpa": 8.5,
+                    "city": "Bangalore",
+                    "started": 2019,
+                    "completed": 2022
+                },
+                {
+                    "degree": "B.Sc",
+                    "college": "SFGC",
+                    "cgpa": 8.4,
+                    "city": "Bangalore",
+                    "started": 2015,
+                    "completed": 2018
+                }
+            ],
+            "technicalSkills": [
+                "Python", "Javascript", "HTML", "CSS", "Nodejs", "Vuejs"
+            ],
+            "workExperience": [
+                {
+                    "company": "Eli Lilly",
+                    "designation": "Analyst - Software Configuration & Development",
+                    "dateOfJoining": "16/08/2022",
+                    "dateOfResigning": "",
+                    "city": "Bangalore"
+                }
+            ]
+        }
+    ]
+}
