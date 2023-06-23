@@ -1,0 +1,50 @@
+{
+    "theatreCategories": [
+        {
+            "type": "3D-IMAX",
+            "price": 700
+        },
+        {
+            "type": "3D",
+            "price": 450
+        },
+        {
+            "type": "2D",
+            "price": 250
+        }
+    ],
+    "seatCategories": [
+        {
+            "name": "front",
+            "price": 0
+        },
+        {
+            "name": "middle",
+            "price": 50
+        },
+        {
+            "name": "rear",
+            "price": 100
+        }
+    ],
+    "seatStatus": [
+        {
+            "row": "A",
+            "category": "front",
+            "numOfSeats": 5,
+            "bookingStatus": [false, false, false, false, false]
+        },
+        {
+            "row": "B",
+            "category": "middle",
+            "numOfSeats": 5,
+            "bookingStatus": [false, false, false, false, false]
+        },
+        {
+            "row": "C",
+            "category": "rear",
+            "numOfSeats": 5,
+            "bookingStatus": [false, false, false, false, false]
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+
+
+
+#. EventEmitter
+- Add and remove the items from a todo list
+- Book a movie ticket online on an app

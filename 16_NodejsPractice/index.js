@@ -1,4 +1,9 @@
 function callBacks() {
     require('./CallBackFunctions/index')
 }
-callBacks()
+// callBacks()
+
+function eventsModule() {
+    require('./eventsModule/index')
+}
+eventsModule()
